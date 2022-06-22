@@ -89,8 +89,7 @@ public final class PurpleDataLoader {
             List<DriverCatalog> germlineDriverCatalog = DriverCatalogFile.read(germlineDriverCatalogTsv);
             LOGGER.info(" Loaded {} germline driver catalog entries from {}", germlineDriverCatalog.size(), germlineDriverCatalogTsv);
 
-            /// TODO Pass RNA sample once germline variants can be RNA-annotated.
-            allGermlineVariants = new SomaticVariantFactory().fromVCFFile(tumorSample, referenceSample, germlineVariantVcf);
+            allGermlineVariants = new SomaticVariantFactory().fromVCFFile(tumorSample, referenceSample, rnaSample, germlineVariantVcf);
             reportableGermlineVariants = ReportableVariantFactory.toReportableGermlineVariants(allGermlineVariants, germlineDriverCatalog);
             LOGGER.info(" Loaded {} germline variants (of which {} are reportable) from {}",
                     allGermlineVariants.size(),
